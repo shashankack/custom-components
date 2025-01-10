@@ -1,0 +1,19 @@
+.loading-text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: black;
+    font-size: 2rem;
+}
+  .loading-text h1 {
+    font-size: 4rem;
+    text-align: center;
+    color: #fff;
+    text-shadow: 0 0 5px #fff, 0 0 10px limegreen, 0 0 10px limegreen, 0 0 20px limegreen, 0 0 20px limegreen, 0 0 20px limegreen, 0 0 205px limegreen;
+  }
+  
+  .char {
+    display: inline-block;
+  }
+  
