@@ -8,3 +8,7 @@
     font-family: 'Coolvetica';
     src: url('./assets/fonts/CoolveticaRg.otf') format('opentype');
 }
+
+::-webkit-scrollbar {
+    display: none;
+}
