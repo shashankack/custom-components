@@ -3,6 +3,8 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./components/Home/Home";
 import Header from "./components/CollapsibleHeader/Header";
 import Footer1 from "./components/Footer/Footer1";
+import Footer from "./components/SM-Footer/Footer";
+
 
 import {
   FaFacebook,
@@ -84,11 +86,12 @@ const App = () => {
 
   return (
     <Router>
-      <Header navLinks={headerLinks} />
+      {/* <Header navLinks={headerLinks} /> */}
       <Routes>
         <Route path="/" element={<Home />} />
       </Routes>
-      <Footer1 socialLinks={socialLinks} navLinks={navLinks} />
+      {/* <Footer1 socialLinks={socialLinks} navLinks={navLinks} /> */}
+      <Footer />
     </Router>
   );
 };
