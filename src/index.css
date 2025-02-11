@@ -12,3 +12,72 @@
 ::-webkit-scrollbar {
     display: none;
 }
+
+/* Reset box-sizing */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Remove list styles (ul, ol) */
+ul, ol {
+  list-style: none;
+}
+
+/* Remove default margins for common elements */
+body, h1, h2, h3, h4, h5, h6, p, figure, blockquote, dl, dd {
+  margin: 0;
+}
+
+/* Remove link styles */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Remove button defaults */
+button, input, select, textarea {
+  font: inherit;
+  border: none;
+  background: none;
+  outline: none;
+}
+
+/* Improve text rendering */
+body {
+  font-family: sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Make images and iframes responsive */
+img, video, iframe {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Remove table spacing */
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+/* Ensure forms and buttons have a consistent appearance */
+button {
+  cursor: pointer;
+  background: transparent;
+}
+
+/* Remove animations for users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

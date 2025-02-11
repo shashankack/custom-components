@@ -4,6 +4,8 @@ import Home from "./components/Home/Home";
 import Header from "./components/CollapsibleHeader/Header";
 import Footer1 from "./components/Footer/Footer1";
 import Footer from "./components/SM-Footer/Footer";
+import ScrollComponent from "./components/ScrollComponent/ScrollComponent";
+
 
 
 import {
@@ -89,9 +91,10 @@ const App = () => {
       {/* <Header navLinks={headerLinks} /> */}
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/scroll" element={<ScrollComponent />} />
       </Routes>
       {/* <Footer1 socialLinks={socialLinks} navLinks={navLinks} /> */}
-      <Footer />
+      {/* <Footer /> */}
     </Router>
   );
 };
