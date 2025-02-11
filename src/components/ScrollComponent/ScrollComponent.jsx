@@ -1,5 +1,4 @@
 import React, { useEffect, useState, useRef } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 import "./ScrollComponent.scss";
 
 // Thumbnail Images (640x800)
@@ -16,61 +15,69 @@ import content_4 from "../../assets/ScrollComponent/content-4.jpg";
 import content_5 from "../../assets/ScrollComponent/content-5.jpg";
 import content_6 from "../../assets/ScrollComponent/content-6.jpg";
 
-const data = {
-  items: [
-    {
-      id: 1,
-      thumbnail: thumbnail_1,
-      title: "Title 1",
-      description: "Description 1",
-      content: content_1,
-    },
-    {
-      id: 2,
-      thumbnail: thumbnail_2,
-      title: "Title 2",
-      description: "Description 2",
-      content: content_2,
-    },
-    {
-      id: 3,
-      thumbnail: thumbnail_3,
-      title: "Title 3",
-      description: "Description 3",
-      content: content_3,
-    },
-    {
-      id: 4,
-      thumbnail: thumbnail_4,
-      title: "Title 4",
-      description: "Description 4",
-      content: content_4,
-    },
-    {
-      id: 5,
-      thumbnail: thumbnail_5,
-      title: "Title 5",
-      description: "Description 5",
-      content: content_5,
-    },
-    {
-      id: 6,
-      thumbnail: thumbnail_6,
-      title: "Title 6",
-      description: "Description 6",
-      content: content_6,
-    },
-  ],
-};
+const data = [
+  {
+    id: 1,
+    thumbnail: thumbnail_1,
+    title: "Title 1",
+    description: "Description 1",
+    content: content_1,
+  },
+  {
+    id: 2,
+    thumbnail: thumbnail_2,
+    title: "Title 2",
+    description: "Description 2",
+    content: content_2,
+  },
+  {
+    id: 3,
+    thumbnail: thumbnail_3,
+    title: "Title 3",
+    description: "Description 3",
+    content: content_3,
+  },
+  {
+    id: 4,
+    thumbnail: thumbnail_4,
+    title: "Title 4",
+    description: "Description 4",
+    content: content_4,
+  },
+  {
+    id: 5,
+    thumbnail: thumbnail_5,
+    title: "Title 5",
+    description: "Description 5",
+    content: content_5,
+  },
+  {
+    id: 6,
+    thumbnail: thumbnail_6,
+    title: "Title 6",
+    description: "Description 6",
+    content: content_6,
+  },
+];
 
 const ScrollComponent = () => {
+  const [items, setItems] = useState([...data, ...data]);
   const [activeIndex, setActiveIndex] = useState(0);
+  const [selectedItem, setSelectedItem] = useState(data[0]);
   const scrollRef = useRef(null);
+  const scrollAmount = 120;
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setActiveIndex((prevIndex) => (prevIndex + 1) % data.items.length);
-    }, 3000);
+      if (listRef.current) {
+        listRef.current.scrollTop += scrollAmount;
+
+        if (listRef.current.scrollTop >= listRef.current.scrollHeight / 2) {
+          listRef.current.scrollTop = 0;
+        }
+      }
+    }, 4000);
+
     return () => clearInterval(interval);
   }, []);
 
@@ -87,18 +94,30 @@ const ScrollComponent = () => {
     <div className="container">
       <div className="left-section">
         <div className="inner-container">
-          {data.items.map((item, index) => (
+          {data.map((item, index) => (
             <div
               key={item.id}
-              className={`thumbnail ${index === activeIndex ? "active" : ""}`}
-              onClick={() => setActiveIndex(index)}
+              className={`thumbnail ${item.id === activeIndex ? "active" : ""}`}
+              onMouseOver={() => setSelectedItem(item)}
             >
               <img src={item.thumbnail} alt={item.title} />
             </div>
           ))}
         </div>
       </div>
-      <div className="right-section">RIGHT</div>
+      <div className="right-section">
+        <div className="right-section-top">
+          <h1>{selectedItem.title}</h1>
+          <p>{selectedItem.description}</p>
+        </div>
+        <div className="right-section-bottom">
+          <img
+            src={selectedItem.content}
+            alt={selectedItem.title}
+            className="content-image"
+          />
+        </div>
+      </div>
     </div>
   );
 };
