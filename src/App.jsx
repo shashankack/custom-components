@@ -5,8 +5,9 @@ import Header from "./components/CollapsibleHeader/Header";
 import Footer1 from "./components/Footer/Footer1";
 import Footer from "./components/SM-Footer/Footer";
 import ScrollComponent from "./components/ScrollComponent/ScrollComponent";
+import GridGallery from "./components/GridGallery/GridGallery";
 
-
+import image from "./assets/forest.jpg";
 
 import {
   FaFacebook,
@@ -19,7 +20,7 @@ import {
 } from "react-icons/fa";
 
 const App = () => {
-   const headerLinks = [
+  const headerLinks = [
     { name: "Home", link: "/#" },
     { name: "About", link: "#about" },
     {
@@ -86,12 +87,33 @@ const App = () => {
     { icon: <FaBehance />, href: "https://behance.net" },
   ];
 
+  const images = {
+    one: [image, image, image, image],
+    two: [image, image, image, image],
+    three: [image, image, image, image],
+    four: [image, image, image, image],
+  }
+
   return (
     <Router>
       {/* <Header navLinks={headerLinks} /> */}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/scroll" element={<ScrollComponent />} />
+        <Route
+          path="/gallery"
+          element={
+            <GridGallery
+              title="THE WORKS"
+              subtitle="Community Yoga Session"
+              images={images}
+              descriptionTitle="Breathe. Stretch. Connect."
+              descriptionText="Join us for a free outdoor yoga session designed to rejuvenate your mind and body.
+      Whether you're a beginner or an experienced yogi, this session will help you find balance and peace."
+              buttonText="REGISTER"
+            />
+          }
+        />
       </Routes>
       {/* <Footer1 socialLinks={socialLinks} navLinks={navLinks} /> */}
       {/* <Footer /> */}
